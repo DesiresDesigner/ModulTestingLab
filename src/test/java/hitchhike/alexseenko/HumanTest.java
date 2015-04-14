@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hitchhike.alexseenko.hitchhiking;
+package hitchhike.alexseenko;
 
 import org.junit.Test;
 import static junit.framework.Assert.*;
-import com.alexseenko.hitchhiking.*;
+import com.alexseenko.hitchhike.*;
 
 /**
  *
@@ -55,4 +55,38 @@ public class HumanTest {
         }
         assertEquals(expResult, result);
     }
+
+    @Test
+    public void detectTest() {
+        double[] curCoords = {0.1, 0.1};
+        Human human = new Human("Kate",  new Building(curCoords, 1, 1));
+
+        Event e = new Event("Some event");
+        assertEquals(human.detect(e), new Event("Kate detected new event: Some event"));
+    }
+
+    @Test
+    public void LocationTest() {
+        double[] curCoords = {0.1, 0.1};
+        Place startLocation = new Building(curCoords, 1, 1);
+        Human human = new Human("Kate",  startLocation);
+        assertEquals(human.getLocation(), startLocation);
+
+        double[] newCoords = {10.5, 10.1};
+        Place newLocation = new Building(newCoords, 1, 1);
+        human.setLocation(newLocation);
+        assertEquals(human.getLocation(), newLocation);
+    }
+
+    @Test
+    public void breakIntoTest() {
+        double[] curCoords = {0.1, 0.1};
+        Human human = new Human("Kate",  new Building(curCoords, 1, 1));
+
+        Smashing smash = new Cry(false);
+        Event expected = new Event("Kate broke into cry");
+        Event actual = human.breakInto(smash);
+        assertEquals(actual, expected);
+    }
 }
+

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alexseenko.hitchhiking;
+package com.alexseenko.hitchhike;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,20 +26,20 @@ public class Human {
     }
     
     public Event detect(Event e) {
-        return new Event(name + "detect new event: " + e.describe());
+        return new Event(name + " detected new event: " + e.describe());
     }
     
     public Event slip (Slippery surface, Place destination, long timems) throws InterruptedException {
         double currentX = location.getCoords()[0], currentY = location.getCoords()[1];
         double deltaX = currentX-destination.getCoords()[0], deltaY = currentY-destination.getCoords()[1];
         
-        while (currentX != destination.getCoords()[0]) {
+        while ((currentX - destination.getCoords()[0]) < 0.01) {
             currentX -= deltaX/timems;
             System.out.println("New coordinates: " + currentX + ", " + currentY);
             TimeUnit.MICROSECONDS.sleep(1);
         }
         
-        while (currentY != destination.getCoords()[1]) {
+        while ((currentY - destination.getCoords()[1]) < 0.01) {
             currentY -= deltaY/timems;
             System.out.println("New coordinates: " + currentX + ", " + currentY);
             TimeUnit.MICROSECONDS.sleep(1);
@@ -57,13 +57,15 @@ public class Human {
         return new Event(name + " heard the next speach: " + speach);
     }
     
-    
-    
     public Place getLocation() {
         return location;
     }
 
     public void setLocation(Place location) {
         this.location = location;
+    }
+
+    public Event breakInto(Smashing smash) {
+        return new Event(name + " broke into " + smash.description());
     }
 }

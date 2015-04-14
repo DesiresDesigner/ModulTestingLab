@@ -3,21 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alexseenko.hitchhiking;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.alexseenko.hitchhike;
 
 /**
  *
  * @author 123
  */
-public class Timeline {
-
-    List<Event> events;
-    
-    public Timeline() {
-        events = new ArrayList();
+public class Air extends Slippery {
+    public Air() {
+        name = "air";
     }
     
 }

@@ -1,9 +1,8 @@
-package hitchhike.alexseenko;
-
+import com.alexseenko.Sin;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class Tests {
+public class SinTest {
     @Test
     public void Sin() {
         Assert.assertEquals(Sin.value(-2 * Math.PI), 0, 0.001);

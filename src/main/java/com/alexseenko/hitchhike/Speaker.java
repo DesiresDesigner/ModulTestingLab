@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alexseenko.hitchhiking;
+package com.alexseenko.hitchhike;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +20,7 @@ public class Speaker extends Human{
     public Event speak(String speech, long timeNS) throws InterruptedException {
         if (timeNS == 0)
             timeNS = 1000000000;
-        String res = name + " says: \r\n";
+        String res = name + " says: \n";
         System.out.print(res);
         if (speech.length() > 0) {
             long timeToWait = timeNS/speech.length();
@@ -29,10 +29,10 @@ public class Speaker extends Human{
                 res += speech.charAt(i);
                 TimeUnit.NANOSECONDS.sleep(timeToWait);
             }
-            res += "\r\n";
+            res += "\n";
             System.out.println();
         } else {
-            res = "...\r\n";
+            res = "...\n";
             System.out.println("...");
         }
         return new Event(res);

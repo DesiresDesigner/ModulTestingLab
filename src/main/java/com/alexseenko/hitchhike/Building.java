@@ -1,4 +1,4 @@
-package com.alexseenko.hitchhiking;
+package com.alexseenko.hitchhike;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +23,11 @@ public class Building extends Place {
         y = coords[1];
         
         windows = new ArrayList<List<Window>>(height);
+        double[] windowsCoords = {x, y};
         for (int i = 0; i < height; i++){
             windows.add(i, new ArrayList(width));
             for (int j = 0; j < width; j++) {
-                windows.get(i).add(j, new Window(false, null, i+1));
+                windows.get(i).add(j, new Window(windowsCoords, false, null, i+1));
             }
         }
     }
@@ -50,6 +51,10 @@ public class Building extends Place {
     
     public void setPlatformToWindow(int level, int position, Platform platform) {
         windows.get(level-1).get(position-1).setPlatform(platform);
+    }
+
+    public Window getWindow(int level, int position) {
+        return windows.get(level-1).get(position-1);
     }
     
 }

@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alexseenko.hitchhiking;
+package com.alexseenko.hitchhike;
 
 /**
  *
  * @author 123
  */
-public class Air extends Slippery {
-    public Air() {
-        name = "air";
+public abstract class Slippery {
+    protected String name;
+    public String getName() {
+        return name;
     }
-    
 }

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hitchhike.alexseenko.hitchhiking;
+package hitchhike.alexseenko;
 
 import org.junit.Test;
 import static junit.framework.Assert.*;
-import com.alexseenko.hitchhiking.*;
+import com.alexseenko.hitchhike.*;
 
 /**
  *
@@ -30,7 +30,7 @@ public class BuildingTest {
     }
     
     @Test
-    public void testSetWindowPropwrties() {
+    public void testSetWindowProperties() {
     double coords[] = {0.5, 7.5};
         Building instance = new Building(coords, 10, 5);
         String expResult = "(5: 0, 0)(5: 0, 0)(5: 0, 0)(5: 0, 0)(5: 0, 0)(5: 0, 0)(5: 0, 0)(5: 0, 0)(5: 0, 0)(5: 0, 0)\r\n" +
